@@ -1,0 +1,46 @@
+services:
+  master:
+    build: .
+    container_name: flowgrid-master
+    command: python3 -m master.master --host 0.0.0.0 --port 9999 --metrics-port 8000
+    ports:
+      - "9999:9999"  # Distributed logic
+      - "8000:8000"  # Prometheus metrics
+      - "8080:8080"  # Live Dashboard
+    networks:
+      - flowgrid-net
+
+  worker:
+    build: .
+    command: python3 -m worker.worker --master-host master --master-port 9999
+    deploy:
+      replicas: 3
+    depends_on:
+      - master
+    networks:
+      - flowgrid-net
+
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    container_name: flowgrid-prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - flowgrid-net
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: flowgrid-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    networks:
+      - flowgrid-net
+
+networks:
+  flowgrid-net:
+    driver: bridge

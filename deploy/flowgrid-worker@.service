@@ -1,0 +1,19 @@
+[Unit]
+Description=Flowgrid Worker Node %i
+After=flowgrid-master.service
+Requires=flowgrid-master.service
+
+[Service]
+Type=simple
+User=shivang
+WorkingDirectory=/home/shivang/Desktop/MINI RAY
+Environment=PYTHONPATH=/home/shivang/Desktop/MINI RAY
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/bin/python3 -m worker.worker --master-host 127.0.0.1 --master-port 9999
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/shivang/Desktop/MINI RAY/worker%i.log
+StandardError=append:/home/shivang/Desktop/MINI RAY/worker%i.log
+
+[Install]
+WantedBy=multi-user.target
