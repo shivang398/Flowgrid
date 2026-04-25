@@ -12,6 +12,8 @@ class Worker:
     worker_id: str
     status: WorkerStatus = WorkerStatus.IDLE
     load: int = 0  # Number of currently executing tasks
+    cpu_usage: float = 0.0  # Percentage (0-100)
+    memory_usage: float = 0.0  # Percentage (0-100)
     last_heartbeat: float = field(default_factory=current_timestamp)
 
     def __post_init__(self):
@@ -19,10 +21,13 @@ class Worker:
         if isinstance(self.status, str) and not isinstance(self.status, WorkerStatus):
             self.status = WorkerStatus(self.status)
 
-    def update_heartbeat(self, load: int):
+    def update_heartbeat(self, load: int, cpu_usage: float = 0.0, memory_usage: float = 0.0):
         """Updates worker heartbeat and load information."""
         self.last_heartbeat = current_timestamp()
         self.load = load
+        self.cpu_usage = cpu_usage
+        self.memory_usage = memory_usage
+        
         if self.load > 0:
             self.status = WorkerStatus.BUSY
         else:

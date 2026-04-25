@@ -16,9 +16,14 @@ class WorkerCommunicationClient:
         self.net_client = WorkerNetworkClient(master_host, master_port)
         logger.info(f"Worker communication initialized for Master at {master_host}:{master_port}")
 
-    def send_heartbeat(self, worker_id: str, load: int) -> bool:
+    def send_heartbeat(self, worker_id: str, load: int, cpu_usage: float = 0.0, memory_usage: float = 0.0) -> bool:
         """Sends a heartbeat message to the Master."""
-        payload = {"worker_id": worker_id, "load": load}
+        payload = {
+            "worker_id": worker_id, 
+            "load": load,
+            "cpu_usage": cpu_usage,
+            "memory_usage": memory_usage
+        }
         msg = Message(type=MessageType.HEARTBEAT, payload=payload)
         return self.net_client.send(msg)
 

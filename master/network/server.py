@@ -96,8 +96,10 @@ class MasterServer:
                 elif msg.type == MessageType.HEARTBEAT:
                     wid = msg.payload.get("worker_id")
                     load = msg.payload.get("load", 0)
+                    cpu = msg.payload.get("cpu_usage", 0.0)
+                    mem = msg.payload.get("memory_usage", 0.0)
                     if wid:
-                        self.worker_manager.update_worker_status(wid, load)
+                        self.worker_manager.update_worker_status(wid, load, cpu, mem)
                 
                 elif msg.type == MessageType.RESULT:
                     if msg.task_id:
@@ -186,9 +188,6 @@ class MasterServer:
         finally:
             if worker_id:
                 logger.warning(f"Worker {worker_id} disconnected.")
-                # We let FaultTolerance handle the cleanup when it notices the OFFLINE state
-                # usually triggered by the workermanager monitor. 
-                # But we can also explicitly mark it offline here.
                 try:
                     worker = self.worker_manager._workers.get(worker_id)
                     if worker:

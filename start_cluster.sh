@@ -21,6 +21,9 @@ echo -e "\n${CYAN}╔═══════════════════�
 echo -e "║      FLOWGRID — Cluster Launcher         ║"
 echo -e "╚══════════════════════════════════════════╝${NC}\n"
 
+# Create logs directory
+mkdir -p logs
+
 # --- Step 1: Clean up ---
 echo -e "${YELLOW}[1/4] Killing any existing cluster processes...${NC}"
 pkill -f "python3 -m master.master" 2>/dev/null || true
@@ -41,40 +44,41 @@ nohup python3 -m master.master \
     --port $MASTER_PORT \
     --metrics-port $METRICS_PORT \
     --dashboard-port $DASHBOARD_PORT \
-    > master.log 2>&1 &
+    > logs/master.log 2>&1 &
 MASTER_PID=$!
-echo "$MASTER_PID" > .master.pid
+echo "$MASTER_PID" > logs/master.pid
 
 # Wait for master to be ready
 for i in $(seq 1 10); do
-    if grep -q "Master fully initialized" master.log 2>/dev/null; then
+    if grep -q "Master fully initialized" logs/master.log 2>/dev/null; then
         echo -e "  ${GREEN}✓ Master is UP (PID: $MASTER_PID) → Port $MASTER_PORT${NC}"
         break
     fi
     sleep 1
 done
 
-if ! grep -q "Master fully initialized" master.log 2>/dev/null; then
-    echo -e "  ${RED}✗ Master failed to start! Check master.log${NC}"
-    tail -n 10 master.log
+if ! grep -q "Master fully initialized" logs/master.log 2>/dev/null; then
+    echo -e "  ${RED}✗ Master failed to start! Check logs/master.log${NC}"
+    tail -n 10 logs/master.log
     exit 1
 fi
 
 # --- Step 3: Start Workers ---
 echo -e "\n${YELLOW}[3/4] Starting $NUM_WORKERS Workers...${NC}"
+rm -f logs/worker.pids
 for i in $(seq 1 $NUM_WORKERS); do
     nohup python3 -m worker.worker \
         --master-host $MASTER_HOST \
         --master-port $MASTER_PORT \
-        > "worker${i}.log" 2>&1 &
-    echo "$!" >> .worker.pids
+        > "logs/worker${i}.log" 2>&1 &
+    echo "$!" >> logs/worker.pids
     sleep 0.5
 done
 
 # Wait for all workers to register
 echo -n "  Waiting for workers to register"
 for i in $(seq 1 15); do
-    COUNT=$(grep -c "successfully registered" master.log 2>/dev/null || echo 0)
+    COUNT=$(grep -c "successfully registered" logs/master.log 2>/dev/null || echo 0)
     if [ "$COUNT" -ge "$NUM_WORKERS" ]; then
         echo ""
         echo -e "  ${GREEN}✓ All $NUM_WORKERS workers registered!${NC}"
@@ -88,7 +92,7 @@ done
 echo -e "\n${YELLOW}[4/4] Cluster Verification...${NC}"
 echo ""
 echo -e "  ${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-grep "successfully registered" master.log | while read line; do
+grep "successfully registered" logs/master.log | while read line; do
     WORKER=$(echo "$line" | grep -oP 'Worker \w+')
     echo -e "  ${GREEN}✓ $WORKER ONLINE${NC}"
 done
@@ -111,5 +115,7 @@ echo -e "╚══════════════════════�
 echo ""
 echo -e "${YELLOW}To stop the cluster: bash stop_cluster.sh${NC}"
 
-# Keep script alive so workers don't die
-wait $MASTER_PID
+echo -e "${YELLOW}To stop the cluster: bash stop_cluster.sh${NC}"
+
+# Exit cleanly
+exit 0

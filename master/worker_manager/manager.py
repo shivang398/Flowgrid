@@ -57,7 +57,7 @@ class WorkerManager(WorkerManagerInterface):
                 del self._workers[worker_id]
                 logger.info(f"Removed worker completely: {worker_id}")
 
-    def update_worker_status(self, worker_id: str, load: int) -> Worker:
+    def update_worker_status(self, worker_id: str, load: int, cpu_usage: float = 0.0, memory_usage: float = 0.0) -> Worker:
         """
         Processes standard remote heartbeats.
         Updates internal load state and refreshes the timestamp natively.
@@ -67,7 +67,7 @@ class WorkerManager(WorkerManagerInterface):
                 raise WorkerNotFoundError(f"Worker {worker_id} not found in tracking map.")
                 
             worker = self._workers[worker_id]
-            worker.update_heartbeat(load=load)
+            worker.update_heartbeat(load=load, cpu_usage=cpu_usage, memory_usage=memory_usage)
             return worker
 
     def _filter_stale_workers(self) -> None:
@@ -93,12 +93,17 @@ class WorkerManager(WorkerManagerInterface):
     def get_least_loaded_worker(self) -> Optional[Worker]:
         """
         Quick utility abstraction strictly isolating the absolute most available node natively.
+        Uses a weighted score (Task Count + CPU + Memory).
         """
         with self._lock:
             available = self.get_available_workers()
             if not available:
                 return None
-            return min(available, key=lambda w: w.load)
+            
+            def calculate_score(w: Worker) -> float:
+                return (w.load * 5.0) + (w.cpu_usage * 1.0) + (w.memory_usage * 0.5)
+
+            return min(available, key=calculate_score)
 
     def assign_task(self, worker_id: str, task: Task) -> bool:
         """

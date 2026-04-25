@@ -39,7 +39,8 @@ class RoundRobinStrategy(SchedulingStrategy):
 
 class LeastLoadedStrategy(SchedulingStrategy):
     """
-    Selects the worker with the lowest native 'load' value. 
+    Selects the worker with the lowest weighted resource score.
+    Score = (task_count * 5.0) + (cpu_usage * 1.0) + (memory_usage * 0.5)
     Ties are broken cleanly by whoever appeared first in the array.
     """
     def select_worker(self, workers: List[Worker], task: Task) -> Worker:
@@ -50,6 +51,11 @@ class LeastLoadedStrategy(SchedulingStrategy):
         if not viable:
              raise NoWorkerAvailableError("All provided workers are offline.")
         
-        # Min function inherently picks the lowest load. Reverts to first index naturally on ties.
-        chosen = min(viable, key=lambda w: w.load)
+        # Calculate a weighted score where lower is better.
+        # We multiply task count by a higher weight (5.0) to prioritize concurrency safety,
+        # but CPU and Memory now act as tie-breakers or limiters.
+        def calculate_score(w: Worker) -> float:
+            return (w.load * 5.0) + (w.cpu_usage * 1.0) + (w.memory_usage * 0.5)
+
+        chosen = min(viable, key=calculate_score)
         return chosen

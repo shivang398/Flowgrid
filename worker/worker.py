@@ -3,6 +3,7 @@ import time
 import signal
 from typing import Optional
 
+import psutil
 from common import Task, get_logger, current_timestamp
 from .executor.executor import TaskExecutor
 from .communication.client import WorkerCommunicationClient
@@ -132,7 +133,12 @@ class WorkerNode:
             try:
                 with self._load_lock:
                     load = self._current_load
-                self.comm_client.send_heartbeat(self.worker_id, load)
+                
+                # Collect system metrics
+                cpu_usage = psutil.cpu_percent(interval=None)
+                memory_usage = psutil.virtual_memory().percent
+                
+                self.comm_client.send_heartbeat(self.worker_id, load, cpu_usage, memory_usage)
             except Exception as e:
                 logger.error(f"Heartbeat failure: {str(e)}")
             time.sleep(self.heartbeat_interval)

@@ -1,0 +1,201 @@
+2026-04-26 00:45:02,099 - master.main - INFO - --- Starting Flowgrid Master ---
+2026-04-26 00:45:02,099 - master.scheduler - INFO - Initializing Master Scheduler.
+2026-04-26 00:45:02,100 - master.fault_tolerance - INFO - Initializing Master Fault Tolerance Manager.
+2026-04-26 00:45:02,101 - master.metrics - INFO - Prometheus metrics server started on port 8000
+2026-04-26 00:45:02,102 - master.http_gateway - INFO - Dashboard HTTP Gateway started on port 8080
+2026-04-26 00:45:02,102 - master.network - INFO - Master Server listening on 0.0.0.0:9999
+2026-04-26 00:45:02,102 - master.main - INFO - Master fully initialized and listening on 0.0.0.0:9999
+2026-04-26 00:45:03,079 - master.network - INFO - New physical connection from ('127.0.0.1', 57880)
+2026-04-26 00:45:03,079 - master.worker_manager - INFO - Registered new worker: 0f5de860
+2026-04-26 00:45:03,079 - master.worker_manager - INFO - Active connection established for worker: 0f5de860
+2026-04-26 00:45:03,079 - master.network - INFO - Worker 0f5de860 successfully registered via ('127.0.0.1', 57880)
+2026-04-26 00:45:03,584 - master.network - INFO - New physical connection from ('127.0.0.1', 57894)
+2026-04-26 00:45:03,584 - master.worker_manager - INFO - Registered new worker: a42d0163
+2026-04-26 00:45:03,584 - master.worker_manager - INFO - Active connection established for worker: a42d0163
+2026-04-26 00:45:03,584 - master.network - INFO - Worker a42d0163 successfully registered via ('127.0.0.1', 57894)
+2026-04-26 00:45:04,081 - master.network - INFO - New physical connection from ('127.0.0.1', 57900)
+2026-04-26 00:45:04,081 - master.worker_manager - INFO - Registered new worker: a563b7d8
+2026-04-26 00:45:04,081 - master.worker_manager - INFO - Active connection established for worker: a563b7d8
+2026-04-26 00:45:04,081 - master.network - INFO - Worker a563b7d8 successfully registered via ('127.0.0.1', 57900)
+2026-04-26 00:45:04,591 - master.network - INFO - New physical connection from ('127.0.0.1', 57916)
+2026-04-26 00:45:04,591 - master.queue - INFO - Enqueued task b1a3cf49-f613-403e-adaf-3975143f4704 with priority 10
+2026-04-26 00:45:04,592 - master.worker_manager - INFO - Transmitting task b1a3cf49-f613-403e-adaf-3975143f4704 over the wire to worker 0f5de860.
+2026-04-26 00:45:04,592 - master.network - INFO - Client submitted task: b1a3cf49-f613-403e-adaf-3975143f4704 (monte_carlo_pi)
+2026-04-26 00:45:04,592 - master.scheduler - INFO - Task b1a3cf49-f613-403e-adaf-3975143f4704 successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,592 - master.queue - INFO - Enqueued task a4ff3b8b-d059-4a7d-8446-e929782ff7df with priority 10
+2026-04-26 00:45:04,593 - master.worker_manager - INFO - Transmitting task a4ff3b8b-d059-4a7d-8446-e929782ff7df over the wire to worker 0f5de860.
+2026-04-26 00:45:04,593 - master.network - INFO - Client submitted task: a4ff3b8b-d059-4a7d-8446-e929782ff7df (monte_carlo_pi)
+2026-04-26 00:45:04,593 - master.scheduler - INFO - Task a4ff3b8b-d059-4a7d-8446-e929782ff7df successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,593 - master.queue - INFO - Enqueued task 3a14cdd6-bb82-4414-b0f5-39c4e61e98cd with priority 10
+2026-04-26 00:45:04,593 - master.worker_manager - INFO - Transmitting task 3a14cdd6-bb82-4414-b0f5-39c4e61e98cd over the wire to worker 0f5de860.
+2026-04-26 00:45:04,593 - master.network - INFO - Client submitted task: 3a14cdd6-bb82-4414-b0f5-39c4e61e98cd (monte_carlo_pi)
+2026-04-26 00:45:04,593 - master.scheduler - INFO - Task 3a14cdd6-bb82-4414-b0f5-39c4e61e98cd successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,593 - master.queue - INFO - Enqueued task 9b5fca97-7078-411d-baeb-75b4330f3735 with priority 10
+2026-04-26 00:45:04,593 - master.worker_manager - INFO - Transmitting task 9b5fca97-7078-411d-baeb-75b4330f3735 over the wire to worker 0f5de860.
+2026-04-26 00:45:04,594 - master.network - INFO - Client submitted task: 9b5fca97-7078-411d-baeb-75b4330f3735 (monte_carlo_pi)
+2026-04-26 00:45:04,594 - master.scheduler - INFO - Task 9b5fca97-7078-411d-baeb-75b4330f3735 successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,594 - master.queue - INFO - Enqueued task 24a03acc-13ac-44a9-a37d-6e34ee1ff9bc with priority 10
+2026-04-26 00:45:04,594 - master.worker_manager - INFO - Transmitting task 24a03acc-13ac-44a9-a37d-6e34ee1ff9bc over the wire to worker a42d0163.
+2026-04-26 00:45:04,594 - master.network - INFO - Client submitted task: 24a03acc-13ac-44a9-a37d-6e34ee1ff9bc (monte_carlo_pi)
+2026-04-26 00:45:04,594 - master.scheduler - INFO - Task 24a03acc-13ac-44a9-a37d-6e34ee1ff9bc successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,594 - master.queue - INFO - Enqueued task f77d3a03-7ed6-4b87-b77b-36a120c63bad with priority 10
+2026-04-26 00:45:04,594 - master.worker_manager - INFO - Transmitting task f77d3a03-7ed6-4b87-b77b-36a120c63bad over the wire to worker a42d0163.
+2026-04-26 00:45:04,594 - master.network - INFO - Client submitted task: f77d3a03-7ed6-4b87-b77b-36a120c63bad (monte_carlo_pi)
+2026-04-26 00:45:04,594 - master.scheduler - INFO - Task f77d3a03-7ed6-4b87-b77b-36a120c63bad successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,595 - master.queue - INFO - Enqueued task 0bca742a-8056-4ce5-bd53-0e780e569bc1 with priority 10
+2026-04-26 00:45:04,595 - master.worker_manager - INFO - Transmitting task 0bca742a-8056-4ce5-bd53-0e780e569bc1 over the wire to worker a42d0163.
+2026-04-26 00:45:04,595 - master.network - INFO - Client submitted task: 0bca742a-8056-4ce5-bd53-0e780e569bc1 (monte_carlo_pi)
+2026-04-26 00:45:04,595 - master.scheduler - INFO - Task 0bca742a-8056-4ce5-bd53-0e780e569bc1 successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,595 - master.queue - INFO - Enqueued task 1bf0bb4b-8612-47dd-a8f6-fc0bc1ac3db0 with priority 10
+2026-04-26 00:45:04,595 - master.worker_manager - INFO - Transmitting task 1bf0bb4b-8612-47dd-a8f6-fc0bc1ac3db0 over the wire to worker a42d0163.
+2026-04-26 00:45:04,595 - master.network - INFO - Client submitted task: 1bf0bb4b-8612-47dd-a8f6-fc0bc1ac3db0 (monte_carlo_pi)
+2026-04-26 00:45:04,596 - master.scheduler - INFO - Task 1bf0bb4b-8612-47dd-a8f6-fc0bc1ac3db0 successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,596 - master.queue - INFO - Enqueued task 31804a8b-a449-4c98-bd9e-055f8fabd687 with priority 10
+2026-04-26 00:45:04,596 - master.worker_manager - INFO - Transmitting task 31804a8b-a449-4c98-bd9e-055f8fabd687 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,596 - master.network - INFO - Client submitted task: 31804a8b-a449-4c98-bd9e-055f8fabd687 (monte_carlo_pi)
+2026-04-26 00:45:04,596 - master.scheduler - INFO - Task 31804a8b-a449-4c98-bd9e-055f8fabd687 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,596 - master.queue - INFO - Enqueued task 6b597643-71ac-4ac7-94fc-dc7595ea6bd8 with priority 10
+2026-04-26 00:45:04,597 - master.worker_manager - INFO - Transmitting task 6b597643-71ac-4ac7-94fc-dc7595ea6bd8 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,597 - master.network - INFO - Client submitted task: 6b597643-71ac-4ac7-94fc-dc7595ea6bd8 (monte_carlo_pi)
+2026-04-26 00:45:04,597 - master.queue - INFO - Enqueued task 33dfd56e-cffc-470c-b79e-06cf31140db2 with priority 10
+2026-04-26 00:45:04,597 - master.scheduler - INFO - Task 6b597643-71ac-4ac7-94fc-dc7595ea6bd8 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,597 - master.network - INFO - Client submitted task: 33dfd56e-cffc-470c-b79e-06cf31140db2 (monte_carlo_pi)
+2026-04-26 00:45:04,597 - master.worker_manager - INFO - Transmitting task 33dfd56e-cffc-470c-b79e-06cf31140db2 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,598 - master.queue - INFO - Enqueued task 8fe2bafc-b3db-437f-b18f-448e5e3b87cf with priority 10
+2026-04-26 00:45:04,598 - master.network - INFO - Client submitted task: 8fe2bafc-b3db-437f-b18f-448e5e3b87cf (monte_carlo_pi)
+2026-04-26 00:45:04,598 - master.scheduler - INFO - Task 33dfd56e-cffc-470c-b79e-06cf31140db2 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,598 - master.queue - INFO - Enqueued task e726dacc-e685-4002-97d6-278dac5ca68a with priority 10
+2026-04-26 00:45:04,598 - master.worker_manager - INFO - Transmitting task 8fe2bafc-b3db-437f-b18f-448e5e3b87cf over the wire to worker a563b7d8.
+2026-04-26 00:45:04,598 - master.network - INFO - Client submitted task: e726dacc-e685-4002-97d6-278dac5ca68a (monte_carlo_pi)
+2026-04-26 00:45:04,598 - master.scheduler - INFO - Task 8fe2bafc-b3db-437f-b18f-448e5e3b87cf successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,598 - master.queue - INFO - Enqueued task 99861546-b180-4510-a07f-d9d4584d0765 with priority 10
+2026-04-26 00:45:04,598 - master.worker_manager - INFO - Transmitting task e726dacc-e685-4002-97d6-278dac5ca68a over the wire to worker 0f5de860.
+2026-04-26 00:45:04,599 - master.network - INFO - Client submitted task: 99861546-b180-4510-a07f-d9d4584d0765 (monte_carlo_pi)
+2026-04-26 00:45:04,599 - master.scheduler - INFO - Task e726dacc-e685-4002-97d6-278dac5ca68a successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,599 - master.queue - INFO - Enqueued task 45d18323-b1a2-40ca-8613-8ea36140f009 with priority 10
+2026-04-26 00:45:04,599 - master.worker_manager - INFO - Transmitting task 99861546-b180-4510-a07f-d9d4584d0765 over the wire to worker a42d0163.
+2026-04-26 00:45:04,599 - master.scheduler - INFO - Task 99861546-b180-4510-a07f-d9d4584d0765 successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,599 - master.network - INFO - Client submitted task: 45d18323-b1a2-40ca-8613-8ea36140f009 (monte_carlo_pi)
+2026-04-26 00:45:04,599 - master.worker_manager - INFO - Transmitting task 45d18323-b1a2-40ca-8613-8ea36140f009 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,599 - master.queue - INFO - Enqueued task ac127b6d-6601-44db-bc95-04f14806606f with priority 10
+2026-04-26 00:45:04,599 - master.scheduler - INFO - Task 45d18323-b1a2-40ca-8613-8ea36140f009 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,599 - master.worker_manager - INFO - Transmitting task ac127b6d-6601-44db-bc95-04f14806606f over the wire to worker 0f5de860.
+2026-04-26 00:45:04,599 - master.network - INFO - Client submitted task: ac127b6d-6601-44db-bc95-04f14806606f (monte_carlo_pi)
+2026-04-26 00:45:04,600 - master.scheduler - INFO - Task ac127b6d-6601-44db-bc95-04f14806606f successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,600 - master.queue - INFO - Enqueued task ceaf8618-e2e0-42a4-985d-8b66fa79546c with priority 10
+2026-04-26 00:45:04,600 - master.worker_manager - INFO - Transmitting task ceaf8618-e2e0-42a4-985d-8b66fa79546c over the wire to worker a42d0163.
+2026-04-26 00:45:04,600 - master.scheduler - INFO - Task ceaf8618-e2e0-42a4-985d-8b66fa79546c successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,600 - master.network - INFO - Client submitted task: ceaf8618-e2e0-42a4-985d-8b66fa79546c (monte_carlo_pi)
+2026-04-26 00:45:04,600 - master.queue - INFO - Enqueued task c6d3311e-1a10-4746-83fe-e2e38bf36357 with priority 10
+2026-04-26 00:45:04,600 - master.worker_manager - INFO - Transmitting task c6d3311e-1a10-4746-83fe-e2e38bf36357 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,600 - master.network - INFO - Client submitted task: c6d3311e-1a10-4746-83fe-e2e38bf36357 (monte_carlo_pi)
+2026-04-26 00:45:04,600 - master.scheduler - INFO - Task c6d3311e-1a10-4746-83fe-e2e38bf36357 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,601 - master.queue - INFO - Enqueued task 43feb0e7-347e-4990-ba1d-a0d23c5ea75a with priority 10
+2026-04-26 00:45:04,601 - master.worker_manager - INFO - Transmitting task 43feb0e7-347e-4990-ba1d-a0d23c5ea75a over the wire to worker 0f5de860.
+2026-04-26 00:45:04,601 - master.network - INFO - Client submitted task: 43feb0e7-347e-4990-ba1d-a0d23c5ea75a (monte_carlo_pi)
+2026-04-26 00:45:04,601 - master.scheduler - INFO - Task 43feb0e7-347e-4990-ba1d-a0d23c5ea75a successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,601 - master.queue - INFO - Enqueued task 730e2dd4-8d4a-4f62-ad68-f69c3a644209 with priority 10
+2026-04-26 00:45:04,601 - master.worker_manager - INFO - Transmitting task 730e2dd4-8d4a-4f62-ad68-f69c3a644209 over the wire to worker a42d0163.
+2026-04-26 00:45:04,601 - master.network - INFO - Client submitted task: 730e2dd4-8d4a-4f62-ad68-f69c3a644209 (monte_carlo_pi)
+2026-04-26 00:45:04,601 - master.scheduler - INFO - Task 730e2dd4-8d4a-4f62-ad68-f69c3a644209 successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,601 - master.queue - INFO - Enqueued task ae1ed666-e3fd-4120-a1e7-c962bdbb1020 with priority 10
+2026-04-26 00:45:04,601 - master.worker_manager - INFO - Transmitting task ae1ed666-e3fd-4120-a1e7-c962bdbb1020 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,602 - master.network - INFO - Client submitted task: ae1ed666-e3fd-4120-a1e7-c962bdbb1020 (monte_carlo_pi)
+2026-04-26 00:45:04,602 - master.scheduler - INFO - Task ae1ed666-e3fd-4120-a1e7-c962bdbb1020 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,602 - master.queue - INFO - Enqueued task 6b87e3cd-e8cf-4dd6-9054-bb44dcfe2217 with priority 10
+2026-04-26 00:45:04,602 - master.worker_manager - INFO - Transmitting task 6b87e3cd-e8cf-4dd6-9054-bb44dcfe2217 over the wire to worker 0f5de860.
+2026-04-26 00:45:04,602 - master.scheduler - INFO - Task 6b87e3cd-e8cf-4dd6-9054-bb44dcfe2217 successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,602 - master.network - INFO - Client submitted task: 6b87e3cd-e8cf-4dd6-9054-bb44dcfe2217 (monte_carlo_pi)
+2026-04-26 00:45:04,602 - master.queue - INFO - Enqueued task 28db338e-dd2b-4eff-8962-3ca5ae372af9 with priority 10
+2026-04-26 00:45:04,602 - master.worker_manager - INFO - Transmitting task 28db338e-dd2b-4eff-8962-3ca5ae372af9 over the wire to worker a42d0163.
+2026-04-26 00:45:04,602 - master.network - INFO - Client submitted task: 28db338e-dd2b-4eff-8962-3ca5ae372af9 (monte_carlo_pi)
+2026-04-26 00:45:04,603 - master.scheduler - INFO - Task 28db338e-dd2b-4eff-8962-3ca5ae372af9 successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,603 - master.queue - INFO - Enqueued task ea921a53-e0a7-4769-a80d-9b2e327b422b with priority 10
+2026-04-26 00:45:04,603 - master.worker_manager - INFO - Transmitting task ea921a53-e0a7-4769-a80d-9b2e327b422b over the wire to worker a563b7d8.
+2026-04-26 00:45:04,603 - master.network - INFO - Client submitted task: ea921a53-e0a7-4769-a80d-9b2e327b422b (monte_carlo_pi)
+2026-04-26 00:45:04,603 - master.scheduler - INFO - Task ea921a53-e0a7-4769-a80d-9b2e327b422b successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,603 - master.queue - INFO - Enqueued task 18f96ffd-db52-42a6-a166-dfa13e89b0f8 with priority 10
+2026-04-26 00:45:04,603 - master.worker_manager - INFO - Transmitting task 18f96ffd-db52-42a6-a166-dfa13e89b0f8 over the wire to worker 0f5de860.
+2026-04-26 00:45:04,603 - master.network - INFO - Client submitted task: 18f96ffd-db52-42a6-a166-dfa13e89b0f8 (monte_carlo_pi)
+2026-04-26 00:45:04,603 - master.scheduler - INFO - Task 18f96ffd-db52-42a6-a166-dfa13e89b0f8 successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,604 - master.queue - INFO - Enqueued task 7d431c9e-59fd-4a4e-98e0-25f358f6fc3a with priority 10
+2026-04-26 00:45:04,604 - master.worker_manager - INFO - Transmitting task 7d431c9e-59fd-4a4e-98e0-25f358f6fc3a over the wire to worker a42d0163.
+2026-04-26 00:45:04,604 - master.network - INFO - Client submitted task: 7d431c9e-59fd-4a4e-98e0-25f358f6fc3a (monte_carlo_pi)
+2026-04-26 00:45:04,604 - master.scheduler - INFO - Task 7d431c9e-59fd-4a4e-98e0-25f358f6fc3a successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,606 - master.queue - INFO - Enqueued task 39a2b127-c322-43f9-a0c2-3385c67769d6 with priority 10
+2026-04-26 00:45:04,606 - master.worker_manager - INFO - Transmitting task 39a2b127-c322-43f9-a0c2-3385c67769d6 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,606 - master.scheduler - INFO - Task 39a2b127-c322-43f9-a0c2-3385c67769d6 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,606 - master.network - INFO - Client submitted task: 39a2b127-c322-43f9-a0c2-3385c67769d6 (monte_carlo_pi)
+2026-04-26 00:45:04,608 - master.queue - INFO - Enqueued task 74df33d5-56fa-42a5-84fd-4083facdf359 with priority 10
+2026-04-26 00:45:04,608 - master.network - INFO - Client submitted task: 74df33d5-56fa-42a5-84fd-4083facdf359 (monte_carlo_pi)
+2026-04-26 00:45:04,608 - master.worker_manager - INFO - Transmitting task 74df33d5-56fa-42a5-84fd-4083facdf359 over the wire to worker 0f5de860.
+2026-04-26 00:45:04,608 - master.scheduler - INFO - Task 74df33d5-56fa-42a5-84fd-4083facdf359 successfully assigned to worker 0f5de860.
+2026-04-26 00:45:04,608 - master.queue - INFO - Enqueued task 675730ab-bd95-4b86-a014-67623d16b8e3 with priority 10
+2026-04-26 00:45:04,608 - master.worker_manager - INFO - Transmitting task 675730ab-bd95-4b86-a014-67623d16b8e3 over the wire to worker a42d0163.
+2026-04-26 00:45:04,609 - master.network - INFO - Client submitted task: 675730ab-bd95-4b86-a014-67623d16b8e3 (monte_carlo_pi)
+2026-04-26 00:45:04,609 - master.scheduler - INFO - Task 675730ab-bd95-4b86-a014-67623d16b8e3 successfully assigned to worker a42d0163.
+2026-04-26 00:45:04,609 - master.queue - INFO - Enqueued task ef1c5640-0c14-4bb5-91c4-c42d4f626f30 with priority 10
+2026-04-26 00:45:04,609 - master.worker_manager - INFO - Transmitting task ef1c5640-0c14-4bb5-91c4-c42d4f626f30 over the wire to worker a563b7d8.
+2026-04-26 00:45:04,609 - master.network - INFO - Client submitted task: ef1c5640-0c14-4bb5-91c4-c42d4f626f30 (monte_carlo_pi)
+2026-04-26 00:45:04,609 - master.scheduler - INFO - Task ef1c5640-0c14-4bb5-91c4-c42d4f626f30 successfully assigned to worker a563b7d8.
+2026-04-26 00:45:04,626 - master.result_manager - INFO - Received final result for task 24a03acc-13ac-44a9-a37d-6e34ee1ff9bc.
+2026-04-26 00:45:04,631 - master.result_manager - INFO - Received final result for task 31804a8b-a449-4c98-bd9e-055f8fabd687.
+2026-04-26 00:45:04,632 - master.result_manager - INFO - Received final result for task b1a3cf49-f613-403e-adaf-3975143f4704.
+2026-04-26 00:45:04,667 - master.result_manager - INFO - Received final result for task f77d3a03-7ed6-4b87-b77b-36a120c63bad.
+2026-04-26 00:45:04,670 - master.result_manager - INFO - Received final result for task 0bca742a-8056-4ce5-bd53-0e780e569bc1.
+2026-04-26 00:45:04,671 - master.result_manager - INFO - Received final result for task 6b597643-71ac-4ac7-94fc-dc7595ea6bd8.
+2026-04-26 00:45:04,672 - master.result_manager - INFO - Received final result for task a4ff3b8b-d059-4a7d-8446-e929782ff7df.
+2026-04-26 00:45:04,691 - master.result_manager - INFO - Received final result for task 1bf0bb4b-8612-47dd-a8f6-fc0bc1ac3db0.
+2026-04-26 00:45:04,712 - master.result_manager - INFO - Received final result for task 33dfd56e-cffc-470c-b79e-06cf31140db2.
+2026-04-26 00:45:04,712 - master.result_manager - INFO - Received final result for task 3a14cdd6-bb82-4414-b0f5-39c4e61e98cd.
+2026-04-26 00:45:04,713 - master.result_manager - INFO - Received final result for task 99861546-b180-4510-a07f-d9d4584d0765.
+2026-04-26 00:45:04,734 - master.result_manager - INFO - Received final result for task ceaf8618-e2e0-42a4-985d-8b66fa79546c.
+2026-04-26 00:45:04,752 - master.result_manager - INFO - Received final result for task 8fe2bafc-b3db-437f-b18f-448e5e3b87cf.
+2026-04-26 00:45:04,752 - master.result_manager - INFO - Received final result for task 9b5fca97-7078-411d-baeb-75b4330f3735.
+2026-04-26 00:45:04,755 - master.result_manager - INFO - Received final result for task 730e2dd4-8d4a-4f62-ad68-f69c3a644209.
+2026-04-26 00:45:04,777 - master.result_manager - INFO - Received final result for task 28db338e-dd2b-4eff-8962-3ca5ae372af9.
+2026-04-26 00:45:04,793 - master.result_manager - INFO - Received final result for task 45d18323-b1a2-40ca-8613-8ea36140f009.
+2026-04-26 00:45:04,793 - master.result_manager - INFO - Received final result for task e726dacc-e685-4002-97d6-278dac5ca68a.
+2026-04-26 00:45:04,797 - master.result_manager - INFO - Received final result for task 7d431c9e-59fd-4a4e-98e0-25f358f6fc3a.
+2026-04-26 00:45:04,817 - master.result_manager - INFO - Received final result for task 675730ab-bd95-4b86-a014-67623d16b8e3.
+2026-04-26 00:45:04,833 - master.result_manager - INFO - Received final result for task c6d3311e-1a10-4746-83fe-e2e38bf36357.
+2026-04-26 00:45:04,833 - master.result_manager - INFO - Received final result for task ac127b6d-6601-44db-bc95-04f14806606f.
+2026-04-26 00:45:04,873 - master.result_manager - INFO - Received final result for task ae1ed666-e3fd-4120-a1e7-c962bdbb1020.
+2026-04-26 00:45:04,873 - master.result_manager - INFO - Received final result for task 43feb0e7-347e-4990-ba1d-a0d23c5ea75a.
+2026-04-26 00:45:04,913 - master.result_manager - INFO - Received final result for task ea921a53-e0a7-4769-a80d-9b2e327b422b.
+2026-04-26 00:45:04,914 - master.result_manager - INFO - Received final result for task 6b87e3cd-e8cf-4dd6-9054-bb44dcfe2217.
+2026-04-26 00:45:04,948 - master.result_manager - INFO - Received final result for task 39a2b127-c322-43f9-a0c2-3385c67769d6.
+2026-04-26 00:45:04,948 - master.result_manager - INFO - Received final result for task 18f96ffd-db52-42a6-a166-dfa13e89b0f8.
+2026-04-26 00:45:04,968 - master.result_manager - INFO - Received final result for task ef1c5640-0c14-4bb5-91c4-c42d4f626f30.
+2026-04-26 00:45:04,969 - master.result_manager - INFO - Received final result for task 74df33d5-56fa-42a5-84fd-4083facdf359.
+2026-04-26 00:45:09,587 - master.network - INFO - New physical connection from ('127.0.0.1', 56572)
+2026-04-26 00:45:09,588 - master.queue - INFO - Enqueued task bef9a6b3-4927-47c2-a5ae-fc0ae27aeec6 with priority 10
+2026-04-26 00:45:09,588 - master.worker_manager - INFO - Transmitting task bef9a6b3-4927-47c2-a5ae-fc0ae27aeec6 over the wire to worker a42d0163.
+2026-04-26 00:45:09,588 - master.network - INFO - Client submitted task: bef9a6b3-4927-47c2-a5ae-fc0ae27aeec6 (add)
+2026-04-26 00:45:09,588 - master.scheduler - INFO - Task bef9a6b3-4927-47c2-a5ae-fc0ae27aeec6 successfully assigned to worker a42d0163.
+2026-04-26 00:45:09,588 - master.queue - INFO - Enqueued task 25276e3b-9c35-4b2f-9a42-7ac208ae185d with priority 10
+2026-04-26 00:45:09,588 - master.worker_manager - INFO - Transmitting task 25276e3b-9c35-4b2f-9a42-7ac208ae185d over the wire to worker a42d0163.
+2026-04-26 00:45:09,589 - master.network - INFO - Client submitted task: 25276e3b-9c35-4b2f-9a42-7ac208ae185d (multiply)
+2026-04-26 00:45:09,589 - master.scheduler - INFO - Task 25276e3b-9c35-4b2f-9a42-7ac208ae185d successfully assigned to worker a42d0163.
+2026-04-26 00:45:09,589 - master.result_manager - INFO - Received final result for task bef9a6b3-4927-47c2-a5ae-fc0ae27aeec6.
+2026-04-26 00:45:09,589 - master.queue - INFO - Enqueued task 9df43602-bec9-4082-811b-8b7dd9c9344e with priority 10
+2026-04-26 00:45:09,589 - master.worker_manager - INFO - Transmitting task 9df43602-bec9-4082-811b-8b7dd9c9344e over the wire to worker a42d0163.
+2026-04-26 00:45:09,589 - master.network - INFO - Client submitted task: 9df43602-bec9-4082-811b-8b7dd9c9344e (monte_carlo_pi)
+2026-04-26 00:45:09,589 - master.queue - INFO - Enqueued task bd3cf12d-58b7-48a1-a403-8d411127c8bc with priority 10
+2026-04-26 00:45:09,589 - master.scheduler - INFO - Task 9df43602-bec9-4082-811b-8b7dd9c9344e successfully assigned to worker a42d0163.
+2026-04-26 00:45:09,589 - master.result_manager - INFO - Received final result for task 25276e3b-9c35-4b2f-9a42-7ac208ae185d.
+2026-04-26 00:45:09,590 - master.worker_manager - INFO - Transmitting task bd3cf12d-58b7-48a1-a403-8d411127c8bc over the wire to worker a42d0163.
+2026-04-26 00:45:09,590 - master.network - INFO - Client submitted task: bd3cf12d-58b7-48a1-a403-8d411127c8bc (hash_crunch)
+2026-04-26 00:45:09,590 - master.scheduler - INFO - Task bd3cf12d-58b7-48a1-a403-8d411127c8bc successfully assigned to worker a42d0163.
+2026-04-26 00:45:09,631 - master.result_manager - INFO - Received final result for task 9df43602-bec9-4082-811b-8b7dd9c9344e.
+2026-04-26 00:45:09,631 - master.result_manager - INFO - Received final result for task bd3cf12d-58b7-48a1-a403-8d411127c8bc.
+2026-04-26 00:45:10,649 - master.main - WARNING - Received signal 15. Shutting down...
+2026-04-26 00:45:10,649 - master.main - INFO - --- Initiating Master Shutdown ---
+2026-04-26 00:45:10,649 - master.network - INFO - Master Server stopped.
+2026-04-26 00:45:10,677 - master.network - WARNING - Worker 0f5de860 disconnected.
+2026-04-26 00:45:10,677 - master.network - WARNING - Worker a563b7d8 disconnected.
+2026-04-26 00:45:10,677 - master.network - WARNING - Worker a42d0163 disconnected.
+2026-04-26 00:45:11,111 - master.http_gateway - INFO - HTTP Gateway stopped.
+2026-04-26 00:45:11,112 - master.fault_tolerance - INFO - Stopping Master Fault Tolerance Manager.
+2026-04-26 00:45:12,100 - master.scheduler - INFO - Stopping Master Scheduler.
+2026-04-26 00:45:12,591 - master.main - INFO - Master shutdown complete.

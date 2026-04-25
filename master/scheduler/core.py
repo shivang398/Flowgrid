@@ -5,7 +5,7 @@ from typing import Optional
 from common import get_logger, TaskStatus, WorkerStatus
 from master.queue import TaskQueue, QueueEmptyError
 from master.worker_manager import WorkerManagerInterface
-from .strategies import SchedulingStrategy, RoundRobinStrategy
+from .strategies import SchedulingStrategy, LeastLoadedStrategy
 from .exceptions import NoWorkerAvailableError, TaskAssignmentError
 
 logger = get_logger("master.scheduler")
@@ -24,7 +24,7 @@ class Scheduler:
     ):
         self.task_queue = task_queue
         self.worker_manager = worker_manager
-        self.strategy = strategy or RoundRobinStrategy()
+        self.strategy = strategy or LeastLoadedStrategy()
         
         self._running = False
         self._loop_thread: Optional[threading.Thread] = None
