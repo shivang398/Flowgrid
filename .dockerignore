@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.env
+.master.pid
+.worker_*.pid
+logs/
+tests/
+dashboard/enterprise-ui/node_modules/
+dashboard/enterprise-ui/.next/

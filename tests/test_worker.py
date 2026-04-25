@@ -50,7 +50,7 @@ class MockCommunicationClient(WorkerCommunicationClient):
 
 class TestWorkerNode(unittest.TestCase):
     def setUp(self):
-        self.worker = WorkerNode("w1", "http://localhost:8080", heartbeat_interval=0.1)
+        self.worker = WorkerNode("w1", "localhost", 9999, heartbeat_interval=0.1)
         # Injection of mock client
         self.mock_comm = MockCommunicationClient("http://localhost:8080")
         self.worker.comm_client = self.mock_comm

@@ -25,7 +25,7 @@ class TestModels(unittest.TestCase):
 
     def test_task_state_transitions(self):
         task = Task(id="t1", function_name="func")
-        task.mark_running()
+        task.mark_running("w1")
         self.assertEqual(task.status, TaskStatus.RUNNING)
         self.assertIsNotNone(task.started_at)
 

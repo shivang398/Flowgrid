@@ -7,18 +7,19 @@ from master.network.server import MasterServer
 from master.worker_manager import WorkerManager
 from master.result_manager import ResultManager
 from master.queue import TaskQueue
-from client.ray_client import RayClient
+from master.auth.manager import AuthManager
+from client.flowgrid_client import FlowgridClient
 
-class TestRayClient(unittest.TestCase):
+class TestFlowgridClient(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # Setup Master components
         cls.worker_mgr = WorkerManager()
         cls.result_mgr = ResultManager()
         cls.task_queue = TaskQueue()
+        cls.auth_mgr = AuthManager()
         
         # Start Master Server on a random free port
-        cls.server = MasterServer(cls.worker_mgr, cls.result_mgr, cls.task_queue, host="127.0.0.1", port=0)
+        cls.server = MasterServer(cls.worker_mgr, cls.result_mgr, cls.task_queue, cls.auth_mgr, host="127.0.0.1", port=0)
         cls.server.start()
         
         # Wait for server to bind and get the port
@@ -31,12 +32,13 @@ class TestRayClient(unittest.TestCase):
         cls.server.stop()
 
     def setUp(self):
-        self.client = RayClient(self.host, self.port)
+        self.client = FlowgridClient(self.host, self.port)
 
     def tearDown(self):
         self.client.disconnect()
 
     def test_submit_task(self):
+        self.client.authenticate("flowgrid_admin_123")
         task_id = self.client.submit_task("add", 1, 2)
         self.assertIsNotNone(task_id)
         
@@ -48,6 +50,7 @@ class TestRayClient(unittest.TestCase):
         self.assertEqual(status, TaskStatus.PENDING)
 
     def test_get_result_polling(self):
+        self.client.authenticate("flowgrid_admin_123")
         task_id = self.client.submit_task("multiply", 3, 4)
         
         # Simulate worker completing the task
@@ -66,6 +69,7 @@ class TestRayClient(unittest.TestCase):
         self.assertEqual(res, 12)
 
     def test_task_failure(self):
+        self.client.authenticate("flowgrid_admin_123")
         task_id = self.client.submit_task("error_func")
         
         # Simulate failure
@@ -78,7 +82,7 @@ class TestRayClient(unittest.TestCase):
 
     def test_connection_error(self):
         # Try a client connected to a wrong port
-        bad_client = RayClient("127.0.0.1", 1) # Port 1 is likely closed
+        bad_client = FlowgridClient("127.0.0.1", 1) # Port 1 is likely closed
         with self.assertRaises(ConnectionError):
             bad_client.connect()
 

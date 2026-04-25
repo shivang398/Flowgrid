@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowgrid-master
+  labels:
+    app: flowgrid
+    component: master
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: master
+  template:
+    metadata:
+      labels:
+        component: master
+    spec:
+      containers:
+      - name: master
+        image: flowgrid-master:latest
+        imagePullPolicy: IfNotPresent
+        command: ["python3", "-m", "master.master"]
+        args: ["--host", "0.0.0.0", "--port", "9999", "--metrics-port", "8000"]
+        ports:
+        - containerPort: 9999
+          name: tcp-logic
+        - containerPort: 8000
+          name: metrics
+        - containerPort: 8080
+          name: dashboard
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowgrid-master-service
+spec:
+  selector:
+    component: master
+  ports:
+  - name: tcp-logic
+    protocol: TCP
+    port: 9999
+    targetPort: 9999
+  - name: dashboard
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer

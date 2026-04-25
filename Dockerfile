@@ -1,18 +1,22 @@
-# Use a slim Python 3.12 image
-FROM python:3.12-slim
+FROM python:3.10-slim
 
-# Set working directory
 WORKDIR /app
 
-# Copy requirements and install dependencies
+# Install system dependencies for psutil and docker SDK
+RUN apt-get update && apt-get install -y \
+    gcc \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project
+# Copy the entire codebase
 COPY . .
 
-# Set the Python path to include the current directory
+# Ensure PYTHONPATH includes the current directory
 ENV PYTHONPATH=/app
 
-# Default command (can be overridden in docker-compose)
+# Default to Master, but can be overridden in K8s
 CMD ["python3", "-m", "master.master"]

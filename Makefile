@@ -1,6 +1,6 @@
 .PHONY: start stop test benchmark clean
 
-PYTHONPATH := $(shell pwd)
+PYTHONPATH := $(shell pwd)/src:$(shell pwd)
 export PYTHONPATH
 
 start:

@@ -1,12 +1,12 @@
 import time
 import argparse
-from client.ray_client import RayClient
+from client.flowgrid_client import FlowgridClient
 from common import get_logger
 
 logger = get_logger("benchmarking")
 
 def run_benchmark(host: str, port: int, num_tasks: int):
-    client = RayClient(host, port)
+    client = FlowgridClient(host, port)
     client.connect()
     
     logger.info(f"Starting benchmark: {num_tasks} tasks...")

@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowgrid-worker
+  labels:
+    app: flowgrid
+    component: worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: worker
+  template:
+    metadata:
+      labels:
+        component: worker
+    spec:
+      containers:
+      - name: worker
+        image: flowgrid-worker:latest
+        imagePullPolicy: IfNotPresent
+        command: ["python3", "-m", "worker.worker"]
+        args: ["--master-host", "flowgrid-master-service", "--master-port", "9999"]
+        resources:
+          limits:
+            # nvidia.com/gpu: 1 # Commented out for local laptop/KIND testing
+            cpu: "1000m"
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        volumeMounts:
+        - name: docker-sock
+          mountPath: /var/run/docker.sock
+      volumes:
+      - name: docker-sock
+        hostPath:
+          path: /var/run/docker.sock
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowgrid-worker-cpu
+  labels:
+    app: flowgrid
+    component: worker-cpu
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      component: worker-cpu
+  template:
+    metadata:
+      labels:
+        component: worker-cpu
+    spec:
+      containers:
+      - name: worker
+        image: flowgrid-worker:latest
+        imagePullPolicy: IfNotPresent
+        command: ["python3", "-m", "worker.worker"]
+        args: ["--master-host", "flowgrid-master-service", "--master-port", "9999"]
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"

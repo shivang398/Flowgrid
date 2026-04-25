@@ -15,7 +15,7 @@ Run:
 
 import sys, time, statistics, argparse
 sys.path.insert(0, '.')
-from client.ray_client import RayClient
+from client.flowgrid_client import FlowgridClient
 
 MASTER_HOST = "localhost"
 MASTER_PORT = 9999
@@ -204,10 +204,20 @@ def main():
     print("\n" + "█" * 60)
     print("  FLOWGRID — INDUSTRY BENCHMARK SUITE")
     print("  Connecting to cluster at {}:{}".format(args.host, args.port))
+    
+    import psutil, platform
+    print(f"  Local HW: {platform.processor()} | {psutil.cpu_count()} Cores | {round(psutil.virtual_memory().total / (1024**3), 1)}GB RAM")
     print("█" * 60)
 
-    client = RayClient(args.host, args.port)
+    client = FlowgridClient(args.host, args.port)
     client.connect()
+    
+    # RBAC: Authenticate before running benchmarks
+    try:
+        client.authenticate("flowgrid_admin_123")
+    except Exception as e:
+        print(f"❌ Authentication failed: {e}")
+        sys.exit(1)
 
     try:
         if args.bench in ("all", "monte_carlo"):

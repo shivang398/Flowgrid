@@ -6,7 +6,7 @@ from master.master import Master
 class TestMasterLifecycle(unittest.TestCase):
     def test_startup_and_shutdown(self):
         # We use a random port to avoid collisions
-        master = Master(host="127.0.0.1", port=0)
+        master = Master(host="127.0.0.1", port=0, metrics_port=0, dashboard_port=0)
         
         # 1. Start the master
         master.start()

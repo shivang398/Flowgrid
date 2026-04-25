@@ -8,6 +8,8 @@ from master.network.server import MasterServer
 from master.worker_manager import WorkerManager
 from master.result_manager import ResultManager
 from worker.network.client import WorkerNetworkClient
+from master.queue.task_queue import TaskQueue
+from master.auth.manager import AuthManager
 
 class TestFraming(unittest.TestCase):
     def test_length_prefixed_framing(self):
@@ -35,7 +37,9 @@ class TestNetworkingIntegration(unittest.TestCase):
     def setUp(self):
         self.worker_mgr = WorkerManager()
         self.result_mgr = ResultManager()
-        self.server = MasterServer(self.worker_mgr, self.result_mgr, host="127.0.0.1", port=0)
+        self.task_queue = TaskQueue()
+        self.auth_mgr = AuthManager()
+        self.server = MasterServer(self.worker_mgr, self.result_mgr, self.task_queue, self.auth_mgr, host="127.0.0.1", port=0)
         self.server.start()
         
         # Get the actual port assigned by OS
@@ -47,6 +51,11 @@ class TestNetworkingIntegration(unittest.TestCase):
     def test_complete_exchange(self):
         client = WorkerNetworkClient("127.0.0.1", self.port)
         self.assertTrue(client.connect())
+        
+        # Authenticate first
+        auth_msg = Message(type=MessageType.AUTH, payload={"api_key": "flowgrid_admin_123"})
+        client.send(auth_msg)
+        auth_resp = client.receive()
         
         # 1. Register
         reg_msg = Message(type=MessageType.REGISTER, payload={"worker_id": "w1"})
